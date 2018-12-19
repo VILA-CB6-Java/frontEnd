@@ -1,0 +1,53 @@
+<div class="form">
+  <form #addQuestionForm="ngForm" (ngSubmit)="onAddQuestion()">
+
+    <div style="text-align: center">
+      <textarea class="question" rows="20" cols="86" #question 
+      placeholder="Add the question here" 
+      [(ngModel)]="this.addQuestionModel.question" required minlength="5"
+      name="question" required>
+    </textarea>
+    </div>
+
+    <div class="answers">
+      <textarea class="question" rows="2" cols="40" #answer1 
+      placeholder="Add the 1st answer here" style="width: 47%" 
+      [(ngModel)]="this.addQuestionModel.answerOne"
+      name="answer1">
+    </textarea>
+
+      <textarea class="question" rows="2" cols="40" #answer2 
+      placeholder="Add the 2nd answer here" style="width: 47%" 
+      [(ngModel)]="this.addQuestionModel.answerTwo"
+      name="answer2" required>
+    </textarea>
+    </div>
+    <div class="answers">
+      <textarea class="question" rows="2" cols="40" #answer3 
+      placeholder="Add the 3rd answer here" style="width: 47%" 
+      [(ngModel)]="this.addQuestionModel.answerThree"
+      name="answer3" required>
+    </textarea>
+      <textarea class="question" rows="2" cols="40" #answer4 
+      placeholder="Add the 4th answer here" style="width: 47%" 
+      [(ngModel)]="this.addQuestionModel.answerFour"
+      name="answer4" required></textarea>
+    
+    </div>
+
+    <div class="options">
+      Correct Answer: 
+      <select name="trueanswer"
+        class="button"
+        style="width:65px; text-align: center;" 
+        [(ngModel)]="addQuestionModel.trueanswer" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <input type="reset" class="button">
+      <button type="submit" [disabled]="!addQuestionForm.form.valid" class ="button">Submit</button>
+    </div>
+  </form>
+</div>

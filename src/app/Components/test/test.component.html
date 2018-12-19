@@ -1,0 +1,115 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+
+<div *ngIf = "userService.username != null && userService.username != '' else notFound"> 
+  <ng-template #resultView>
+    <div style="text-align: center;">
+      <div *ngIf="this.result.grade >= 70" class="passed">
+        <br><br>
+        <h1>Congratulations!</h1>
+        <br><br>
+        <h2>Grade: {{this.result.grade}}</h2>
+        <br><br>
+        <progress class="progressSuccess" max="100" [value]="this.result.grade"></progress>
+        <br><br>
+        <h3>You passed the exam</h3>
+        <br><br>
+        <button (click)="exitFullScreen()" routerLink="/index" (click)="exitTest()" class="qButton" style="width:200px;">Main Menu</button> 
+        <br><br>
+      </div>
+
+      <div *ngIf="this.result.grade < 70" class="failed">
+        <br><br>
+        <h1>You Failed</h1>
+        <br><br>
+        <h2>Grade: {{this.result.grade}}</h2>
+        <br><br>
+        <progress class="progressFail" max="100" [value]="this.result.grade"></progress>
+        <br><br>
+        <h3>Try Harder next time</h3>
+        <br><br>
+        <button (click)="exitFullScreen()" (click)="exitTest()" routerLink="/index" class="qButton" style="width:200px;">Main Menu</button> 
+        <br><br>
+      </div>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+  <div *ngIf="this.result.grade == -1 else resultView" class="outer">
+    <div style="float:left; width:13%;">
+      <div *ngFor="let question of questions; index as i;">
+        <span>
+          <i #elem class="fas fa-flag" [style.color]="question.flagged ? 'red':'#2c2c2c'" 
+          (click)="question.flagged ? question.flagged = false : question.flagged=true"></i>
+          <button class="qButton" [style.backgroundColor]="i+1 == selectedQuestion ? '#2c2c2c':'#5c5c5c'"
+            [style.borderRight]="question.trueanswer > 0 ? '20px solid #ff9a00':'none' " 
+            [style.borderLeft]="question.trueanswer > 0 ? '20px solid #ff9a00':'none' "
+            (click)="setSelected(i+1)">
+            {{"Question " + (i+1)}}</button>
+        </span>
+      </div>
+      <div>
+        
+        
+        <button *ngIf="confirmation===false" class="submit"  (click)="confirmation=!confirmation">Submit</button>
+        
+
+      </div>
+    </div>
+    <div class="topBar">
+      <button class="nButton" style="float:left" (click)="previous()"> 
+        <i class="fas fa-arrow-left"></i> Previous
+        Question</button>
+      <div class="centerText" [ngClass]="{'warning': warning,'timer': !warning}">
+        Time: &nbsp;&nbsp; {{ minutes }} :  {{ seconds | number: '2.0-0' }}
+      </div>
+      <button class="nButton" style="float:right" 
+      (click)="next()"> Next Question <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div [hidden]="!confirmation" class="question confirm">Are you sure you want to submit the test? 
+      <br>
+      <button (click)="confirmation=!confirmation" class="submit" style="width:150px">Back</button>
+        <button *ngIf="confirmation===true" class="submit"  style="width:150px" type="submit" (click)="submitTest()">Submit</button>
+      </div>
+
+
+    <form #testForm="ngForm" [hidden]="confirmation">
+      <div *ngFor="let question of questions; index as i;">
+
+        <div class="question" *ngIf="selectedQuestion == i+1">
+          <div style="height:560px; padding: 25px;">
+            {{ question.question }}
+            
+          </div>
+          <div class="answers" *ngIf="selectedQuestion == i+1">
+            <div>
+              <button (click)="setChosen(question, 1, i)" 
+              class=aButton [style.backgroundColor]="question.trueanswer == 1 ?'#ffebcc':'#f2f2f2' ">
+              {{question.answerOne}}</button>
+              <button (click)="setChosen(question, 2, i)" 
+              class=aButton [style.backgroundColor]="question.trueanswer == 2 ?'#ffebcc':'#f2f2f2' ">
+              {{question.answerTwo}}</button>
+            </div>
+            <div>
+              <button (click)="setChosen(question, 3, i)" 
+              class=aButton [style.backgroundColor]="question.trueanswer == 3 ?'#ffebcc':'#f2f2f2' ">
+              {{question.answerThree}}</button>
+              <button (click)="setChosen(question, 4, i)" 
+              class=aButton [style.backgroundColor]="question.trueanswer == 4 ?'#ffebcc':'#f2f2f2' ">
+              {{question.answerFour}}</button>
+            </div>         
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

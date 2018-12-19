@@ -1,0 +1,111 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+<div *ngIf = "userService.username === 'god' else notFound"> 
+  <div *ngIf="!editToggle">
+
+  <button
+    class="button"
+    (click)="toggle()"> 
+    <span *ngIf="addToggle==false">Add a question</span>
+    <span *ngIf="addToggle==true">Back</span>
+  </button>
+
+  <app-add-question *ngIf=addToggle></app-add-question>
+
+  <div *ngIf="!addToggle">
+  <div *ngFor="let question of allQuestions">
+    <div class="head">
+      {{ "Question Id: " + question.id }} &nbsp;&nbsp; {{"Correct Answer: " + question.trueanswer }}
+      <i (click)="deleteQuestion(question)"  class="fas fa-times"></i>
+      <i (click)="editQuestion(question)" style="color:white" class="far fa-edit"></i>
+    </div>
+
+    <div class="details">
+      <div>
+        Question: <br>
+        {{ question.question }} 
+      </div>
+  <div style = "border-top: 1px solid #2c2c2c">
+      <div [style.backgroundColor]="question.trueanswer == 1 ? '#b3ffb3':'transparent'">
+        Answer 1:&nbsp;&nbsp; {{ question.answerOne }}
+      </div>
+
+      <div [style.backgroundColor]="question.trueanswer == 2 ? '#b3ffb3':'transparent'">
+        Answer 2:&nbsp;&nbsp; {{ question.answerTwo }}
+      </div>
+
+      <div [style.backgroundColor]="question.trueanswer == 3 ? '#b3ffb3':'transparent'">
+        Answer 3:&nbsp;&nbsp; {{ question.answerThree }}
+      </div>
+
+      <div [style.backgroundColor]="question.trueanswer == 4 ? '#b3ffb3':'transparent'">
+        Answer 4:&nbsp;&nbsp; {{ question.answerFour }}
+      </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  <div *ngIf="editToggle">
+
+    <div class="form">
+      <form #editQuestionForm="ngForm" (ngSubmit)="submitEditQuestion()">
+    
+        <div style="text-align: center">
+          <textarea class="question" rows="20" cols="86" #question 
+          placeholder="Add the question here" 
+          [(ngModel)]="this.editQuestionModel.question" required minlength="5"
+          name="question" required>
+        </textarea>
+        </div>
+    
+        <div class="answers">
+          <textarea class="question" rows="2" cols="40" #answer1 
+          placeholder="Add the 1st answer here" style="width: 47%" 
+          [(ngModel)]="this.editQuestionModel.answerOne"
+          name="answer1">
+        </textarea>
+          <textarea class="question" rows="2" cols="40" #answer2 
+          placeholder="Add the 2nd answer here" style="width: 47%" 
+          [(ngModel)]="this.editQuestionModel.answerTwo"
+          name="answer2" required>
+        </textarea>
+        </div>
+        <div class="answers">
+          <textarea class="question" rows="2" cols="40" #answer3 
+          placeholder="Add the 3rd answer here" style="width: 47%" 
+          [(ngModel)]="this.editQuestionModel.answerThree"
+          name="answer3" required>
+        </textarea>
+          <textarea class="question" rows="2" cols="40" #answer4 
+          placeholder="Add the 4th answer here" style="width: 47%" 
+          [(ngModel)]="this.editQuestionModel.answerFour"
+          name="answer4" required></textarea>
+        
+        </div>
+    
+        <div class="options">
+          Correct Answer: 
+          <select 
+            class="button"
+            style="width: 60px; text-align: center;"
+            name="trueanswer" 
+            [(ngModel)]="this.editQuestionModel.trueanswer" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <button (click)="editToggle = !editToggle" style="float:left" class="button">Back</button>
+          <input type="reset" class="button">
+          <input type="submit" [disabled]="!editQuestionForm.form.valid" class ="button">
+        
+        </div>
+      </form>
+    </div> 
+  </div>
+</div>

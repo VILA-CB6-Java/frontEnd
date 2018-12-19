@@ -1,0 +1,128 @@
+<div class="myHeader">
+
+  <div class="login" *ngIf="user == null && !registerForm; ">
+    <!--login form-->
+    <span  class="logo" routerLink="/index"> <img src="../../assets/logo2.png" alt="LOGO"> </span>
+    <form style="border:none" #loginForm="ngForm">
+      <span>
+        <input class="form radius" id="username" type="text" placeholder="Username" [(ngModel)]="loginModel.username"
+          name="username" required #userInput>
+      </span>
+      <span>
+        <input class="form radius" id="pass" type="password" placeholder="Password" [(ngModel)]="loginModel.password"
+          required password name="password" #passInput>
+      </span>
+
+      <span>
+        <button class="sButton" type="submit" (click)="onLoginSubmit()" routerLink="/index">
+          Log-in <i class="fas fa-sign-in-alt"></i></button>
+
+        <button class="sButton" (click)="toRegister()">Register <i class="far fa-edit"></i></button>
+      </span>
+    </form>
+
+  </div>
+
+  <div *ngIf="user != null" class="myHeader">
+
+    <!--welcome user-->
+
+    <span class="logo" routerLink="/index"> <img src="../../assets/logo2.png" alt="LOGO"> </span>
+    <span class="welcome"> welcome <a>{{ user.username }}
+        <i class="far fa-user"></i></a>&nbsp; &nbsp;
+      <a routerLink="/index" (click)="logOut()">
+        (Log-out)&nbsp;<i class="fas fa-sign-out-alt"></i></a> </span>
+
+    <span style="float: right">
+      <button class="sButton" routerLink="/announcements">Announcements</button>
+      <button class="sButton" routerLink="/pastexams">View Past Exams</button>
+      <button class="sButton" (click)="takeExam()">Take an Exam</button>
+      <button class="sButton" (click)="toMessage()">Contact us</button>
+    </span>
+
+
+
+
+    <span style="float: right" *ngIf="user.username === 'god'">
+      <!--if admin-->
+      <button class="sButton" routerLink="/messages">View Messages</button>
+      <button class="sButton" routerLink="/users">Users</button>
+      <button class="sButton" routerLink="/questions">Questions</button>
+    </span>
+  </div>
+
+
+  <div *ngIf="sendMessage" style="text-align:right;">
+
+
+
+    <!-- send Message-->
+
+    <form #sendMessageForm="ngForm" (ngSubmit)="onSendMessageSubmit()" style="border:none;">
+      <div>
+        <textarea style="margin: 4px;" name="message" minlength="2" maxlength="1000" required placeholder="Your message goes here"
+          rows="4" cols="50" [(ngModel)]="sendMessageModel.body">
+     </textarea>
+      </div>
+      <div>
+        <button class="mButton" (click)="toMessage()">Cancel</button>
+        <button type="submit" class="mButton">Send message</button>
+
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="registerForm">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div routerLink="/index" class="logo" style="padding:0px; margin-left:5px;"> <img src="../../assets/logo2.png"
+              alt="LOGO"> </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Register Form-->
+
+    <div class="container-fluid regForm">
+      <form style="border:none" (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
+        <div class="row" style="margin: 10px 0px">
+          <label class="col-md-2 ml-md-auto tWhite" for="user">E-mail: </label>
+          <input class="radius col-md-2" name="email" type="email" placeholder="your@email.com" [(ngModel)]="registerModel.email"
+            required #newEmail email>
+        </div>
+
+        <div class="row" style="margin: 10px 0px">
+          <label class="col-md-2 ml-md-auto tWhite" for="user">Username: </label>
+          <input class="radius col-md-2" name="username" type="text" placeholder="username" [(ngModel)]="registerModel.username"
+            required #newUsername>
+        </div>
+
+        <div class="row" style="margin: 10px 0px">
+          <label class="col-md-2 ml-md-auto tWhite" for="first">First Name: </label>
+          <input class="radius col-md-2" name="first" type="text" placeholder="First name" required #newFirstName
+            [(ngModel)]="registerModel.firstName">
+
+        </div>
+
+        <div class="row" style="margin: 10px 0px">
+          <label class="col-md-2 ml-md-auto tWhite" for="last">Last Name: </label>
+          <input class="radius col-md-2" name="last" type="text" placeholder="Last name" [(ngModel)]="registerModel.lastName"
+            required #newLastName>
+        </div>
+
+        <div class="row" style="margin: 10px 0px">
+          <label class="col-md-2 ml-md-auto tWhite" for="pass">Password: </label>
+          <input class="radius col-md-2" name="pass" type="password" placeholder="password" [(ngModel)]="registerModel.password"
+            id="pass" required minlength="6" maxlength="10">
+        </div>
+
+        <div class="row">
+          <button class="sButton col-md-1 ml-md-auto" (click)="toRegister()">Back</button>
+          <button class="sButton col-md-1" [disabled]="!registerForm.form.valid" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

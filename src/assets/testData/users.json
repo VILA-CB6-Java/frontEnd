@@ -1,0 +1,7 @@
+[
+    { "firstName": "Loizos", "lastName": "Loizou", "username": "loizos", "type": "user", "email": "loi@zos.com" },
+    { "firstName": "Vasilis", "lastName": "Sotiropoulos", "username": "vasilis", "type": "user", "email": "vas@ilis.com" },
+    { "firstName": "Angelos", "lastName": "Kapsimalis", "username": "angelos", "type": "user", "email": "ange@los.com" },
+    { "firstName": "Iraklis", "lastName": "Papanikos", "username": "iraklis", "type": "user", "email": "ira@klis.com" },
+    { "firstName": "God", "lastName": "God", "username": "god", "type": "admin", "email": "god@god.com" }
+  ]

@@ -1,0 +1,44 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+
+<div *ngIf = "user.username != null && user.username != '' else notFound"> 
+
+  <div *ngFor="let exam of userExams" class=" ">
+    <div class="head">
+      <div style="text-align: left">{{ exam.dtime | date: 'MMMM dd yyyy' }}</div>
+    </div>
+    <div class="details">
+      <div class="grade" style="padding: 10px;">
+        Grade: {{exam.grade}}
+      </div>
+      <div *ngIf="exam.grade>69; else fail">
+        <div style="color:rgb(0, 128, 0); font-weight: bold; padding-left: 10px">PASSED 
+          <i class="fas fa-award" 
+          (click)="exam.viewIt = !exam.viewIt"></i></div>
+        
+        <div [hidden]="!exam.viewIt" class="certificate">
+         
+    
+          <a href="../../assets/certification.jpg" download>
+          <img src="../../assets/certification.jpg" alt="certification">
+          </a>
+
+          <div class="text">{{ this.user.firstName }} {{ this.user.lastName }}</div>
+          <div class="date"> {{
+            this.exam.dtime | date: 'dd/MM/y' }}
+          </div>   
+        </div>
+
+
+      </div>
+      <ng-template #fail>
+        <div style="padding-left: 10px;">
+          FAILED
+        </div>
+      </ng-template>
+    </div>
+    <hr>
+  </div>
+</div>

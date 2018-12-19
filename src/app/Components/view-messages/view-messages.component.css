@@ -1,0 +1,29 @@
+.container{
+    margin: 30px 15px;
+}
+
+.head{
+    background-color: #2c2c2c;
+    color: white;
+    border-radius: 2px 2px 0px 0px;
+    padding: 6px;
+}
+
+.body{
+    color: #2c2c2c;
+    border: 1px solid #2c2c2c;
+    border-radius: 0px 0px 8px 8px;
+    padding:12px;
+}
+
+i{
+    float:right;
+    margin: 5px 6px 5px 15px;
+    color: #ff9a4d;
+    
+}
+i:hover{
+    cursor: pointer;
+    color: red;
+    transition: 300ms;
+}

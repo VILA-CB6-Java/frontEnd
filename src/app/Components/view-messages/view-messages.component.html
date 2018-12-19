@@ -1,0 +1,19 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+
+<div *ngIf = "userService.username === 'god' else notFound"> 
+  <div *ngFor="let message of messages" class="container">
+    <div class="head">
+      <div>{{ message.username }}
+        <i class="fas fa-trash-alt" (click)="deleteMessage(message)"></i>
+        <div style="float:right">{{ message.dtime | date: 'dd MMM yyyy &nbsp;&nbsp;&nbsp;  HH:mm' }}</div>
+      </div>
+    </div>
+      <div class="body">
+        {{ message.body }}
+      </div>
+    </div>
+  </div>
+

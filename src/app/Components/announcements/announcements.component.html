@@ -1,0 +1,47 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+
+<div *ngIf = "userService.username != null && userService.username != '' else notFound"> 
+  <div *ngIf="userService.username === 'god'">
+    <button (click)="add = !add" class="button">
+      <span *ngIf="!add">Add Announcement</span>
+      <span *ngIf="add">Back</span>
+    </button>
+  </div>
+
+
+  <div *ngIf="add" class="formContainer">
+    <form #announcementForm="ngForm" (ngSubmit)="onAddAnnouncement()" style="border:none;" autocomplete="off">
+      <input class="inputs" type="text" required name="title" 
+      placeholder="Title" minlength="6" name="title" #title
+      [(ngModel)]="addAnnouncement.title"><br>
+      <textarea class="inputs" required name="body" 
+      rows="8" name="body" #body
+      placeholder="Enter your announcement here"
+        [(ngModel)]="addAnnouncement.body"
+        minlength="15"></textarea>
+        <div style="text-align: left">
+      <button [disabled]="!announcementForm.form.valid" type="submit" class ="button">Submit</button>
+    </div>
+    </form>
+  </div>
+
+
+  <div *ngIf="!add">
+    <div *ngFor="let announcement of announcements">
+      <div class="title">
+        <span style="width: 50%;">
+          {{ announcement.title }}
+        </span>
+        <span style="float:right; text-align: right;">
+          {{ announcement.dtime | date: 'dd MMM yyyy &nbsp;&nbsp;&nbsp;  HH:mm' }}
+        </span>
+      </div>
+      <div class="text">
+        {{ announcement.body }}
+      </div>
+    </div>
+  </div>
+</div>

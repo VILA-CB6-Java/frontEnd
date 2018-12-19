@@ -1,0 +1,43 @@
+.certificate{
+    position: relative;
+    margin:10px;
+}
+
+.text {
+    position: absolute;
+    top: 195px;
+    left: 225px;
+    font-size: 1.75em;
+    color: #444444;
+  }
+
+  i{
+      color:red;
+  }
+  i:hover{
+    cursor: pointer;
+  }
+
+  .date {
+    position: absolute;
+    top:327px;
+    left: 160px;
+    font-size: 1.25em;
+    color: #444444;
+  }
+
+  .head{
+      color:#ffb54d;
+      background-color: #2c2c2c;
+      border-radius:2px 2px 0px 0px;
+      margin:30px 10px 0px 10px;
+      padding: 6px;
+  }
+
+  .details{
+      border: 1px solid #2c2c2c;
+      border-top: none;
+      border-radius: 0px 0px 8px 8px;
+      padding: 6px;
+      margin: 0px 10px 10px 10px;
+  }

@@ -1,0 +1,38 @@
+<ng-template #notFound>
+  <app-page-not-found></app-page-not-found>
+</ng-template>
+
+<div *ngIf = "userService.username === 'god' else notFound"> 
+  <div *ngFor="let user of userList">
+
+    <div class="head">
+      <i class="fas fa-info-circle info" (click)="viewUserExams(user)"></i>
+      Username: {{ user.username }}
+      <i *ngIf="user.username != 'god'" (click)="deleteUser(user.username)"  class="fas fa-times"></i>
+
+    </div>
+    <div class="details">
+      <div>
+        Email: {{ user.email }}
+      </div>
+
+      <div>
+        Full name: {{ user.lastName}} {{ user.firstName }}
+      </div>
+
+      <div [hidden]="!viewExams">
+
+        <div *ngFor="let exam of userExams; index as i">
+          <div *ngIf="exam.userId == user.userId">
+            <hr>
+            <div>Date and Time: {{ exam.dtime}}<br>
+              <span [style.backgroundColor]="exam.grade > 69 ? 'palegreen':'null'">Grade:
+                {{ exam.grade }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

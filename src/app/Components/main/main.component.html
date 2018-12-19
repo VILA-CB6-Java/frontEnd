@@ -1,0 +1,30 @@
+<ngb-carousel *ngIf="images" style="background-color: #f2f2f2;">
+    <ng-template ngbSlide>
+      <img [src]="images[0]" alt="Random first slide" style="width:100%; border-radius: 25px">
+      <div class="carousel-caption">
+        <h3>Change your life with ALIV certification</h3>
+        <p>Approved by top Companies</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img [src]="images[1]" alt="Random second slide" style="width:100%; border-radius: 25px">
+      <div class="carousel-caption">
+        <h3>Talk is cheap</h3>
+        <p>Show me the code</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img [src]="images[2]"  alt="Random third slide" style="width:100%; border-radius: 25px">
+      <div class="carousel-caption">
+        <h3>It's not a bug</h3>
+        <p>It's an undocumented feature</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img [src]="images[3]" alt="Random fourth slide" style="width:100%; border-radius: 25px">
+      <div class="carousel-caption">
+        <h3>Code never lies!</h3>
+        <p>Comments sometimes do</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

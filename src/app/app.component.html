@@ -1,0 +1,28 @@
+<div [hidden]="mode == 'takeExam'">
+  <app-header (modeEvent)="mode=$event"></app-header>
+</div>
+
+<div *ngIf="mode != 'takeExam'">
+  <div class="container-fluid">
+    <div class="row" style="background-color: #f2f2f2;">
+
+      <div class="col-md-2 d-sm-none d-md-block" style="padding: 15px 10px 0px 10px;">
+
+      </div>
+
+      <div class="col-md-8">
+        <router-outlet></router-outlet>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mode != 'takeExam'">
+  <app-footer></app-footer>
+</div>
+
+<div *ngIf="mode =='takeExam'">
+  <app-test (modeEvent)="mode=$event"></app-test>
+</div>

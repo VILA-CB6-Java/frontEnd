@@ -1,0 +1,47 @@
+.head{
+    background-color: #2c2c2c;
+    color: white;
+    border-radius: 2px 2px 0px 0px;
+    margin: 30px 8px 0px 8px;
+    padding: 4px;
+}
+
+.details{
+    padding: 4px;
+    border: 1px solid #2c2c2c;
+    border-radius: 0px 0px 8px 8px;
+    margin: 0px 8px 8px 8px;
+}
+i{
+    color: #ff9a4d; 
+    float:right; 
+    font-size: 1.25em; 
+    margin-right: 6px;
+    margin-top: 6px;
+}
+
+i:hover{
+    cursor: pointer;
+    color: red;
+    transition: 300ms;
+}
+.info{
+    color: white; 
+    float:none;
+    margin: 6px 8px 0px 5px;
+}
+.info:hover{
+    color: #ffb54d;
+    cursor: pointer;
+}
+
+button{
+    border:none;
+    background-color: navy;
+    color:aliceblue;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+button:hover{
+    cursor:pointer;
+}
