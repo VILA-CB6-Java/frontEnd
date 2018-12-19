@@ -19,7 +19,7 @@ export class TestComponent implements OnInit, OnDestroy {
   modelTest: testModel;
   confirmation=false;
   warning = false;
-  minutes:number=20;
+  minutes:number=15;
   seconds: number=0;
 
   @Output() public modeEvent = new EventEmitter();
@@ -108,7 +108,7 @@ export class TestComponent implements OnInit, OnDestroy {
 
   
   startCountdown(){
-    var minutes = 20;
+    var minutes = 15;
     var seconds = 0;
     var interval = setInterval(() => {
 
@@ -121,7 +121,7 @@ export class TestComponent implements OnInit, OnDestroy {
         minutes--;
       }
 
-      if(minutes<19){
+      if(minutes<5){
         this.warning = true;
       }
 
