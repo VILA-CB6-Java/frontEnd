@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 
 export class AnnouncementsService {
 
-  private url = "http://localhost:8500/announcements";
-  private urlAdd = "http://localhost:8500/announcements/post";
+  private url = "http://localhost:8765/admin-announcements-service/announcements";
+  private urlAdd = "http://localhost:8765/admin-announcements-service/announcements/post";
   constructor(private http: HttpClient) {
    }
   

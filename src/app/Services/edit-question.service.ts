@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EditQuestionService {
-  url = "http://localhost:8300/questions/update";
-  urlDelete = "http://localhost:8300/questions/delete";
+  url = "http://localhost:8765/exam-actions-service/questions/update";
+  urlDelete = "http://localhost:8765/exam-actions-service/questions/delete";
   constructor(private http: HttpClient ) { }
   
   editQuestion(question: AddQuestionModel){

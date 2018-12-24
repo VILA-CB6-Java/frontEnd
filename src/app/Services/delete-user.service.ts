@@ -13,7 +13,7 @@ export class DeleteUserService {
 
   constructor(private http: HttpClient) { }
 
-  private url ="http://localhost:8200/users/delete";
+  private url ="http://localhost:8765/user-actions-service/users/delete";
 
   deleteUser(user: UsernameModel): Observable<any>{
     return this.http.post<any>(this.url, user)

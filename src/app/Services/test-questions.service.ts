@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TestQuestionsService {
 
-  private url: string = "http://localhost:8300/exam"
+  private url: string = "http://localhost:8765/exam-actions-service/exam"
   constructor(private http: HttpClient) { }
 
   getTestQuestions(): Observable <TestQuestion[]>  { 

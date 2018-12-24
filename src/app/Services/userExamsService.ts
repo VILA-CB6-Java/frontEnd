@@ -10,7 +10,7 @@ import { User } from '../Models/user.model';
 })
 export class UserExamsService {
 
-  private url = "http://localhost:8300/exam/retrieve"
+  private url = "http://localhost:8765/exam-actions-service/exam/retrieve"
   constructor(private http: HttpClient) { }
 
   getUserExams(user: User): Observable<userExam[]> {

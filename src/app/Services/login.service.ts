@@ -9,7 +9,7 @@ import { User } from '../Models/user.model';
 })
 export class LoginService {
 
-  private url="http://localhost:8000/users/login"
+  private url="http://localhost:8765/user-login-service/users/login"
   constructor(private http: HttpClient) { }
 
   loginUser(user: LoginModel): Observable<User>{

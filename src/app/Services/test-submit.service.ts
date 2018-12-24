@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TestSubmitService {
 
-  private url="http://localhost:8300/exam/submit";
+  private url="http://localhost:8765/exam-actions-service/exam/submit";
   
   constructor(private http: HttpClient) { }
 

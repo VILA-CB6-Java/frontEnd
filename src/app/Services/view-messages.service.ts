@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ViewMessagesService {
 
-  private url = "http://localhost:8500/messages"
-  private urlDelete = "http://localhost:8500/messages/delete"
+  private url = "http://localhost:8765/admin-announcements-service/messages"
+  private urlDelete = "http://localhost:8765/admin-announcements-service/messages/delete"
   constructor(private http: HttpClient) { }
 
   getMessages(): Observable<Message[]>{
@@ -17,7 +17,7 @@ export class ViewMessagesService {
   }
 
   deleteMessage(message: Message): Observable<any>{
-   
+   alert(JSON.stringify(message));
     return this.http.post<any>(this.urlDelete, message);
   }
 }

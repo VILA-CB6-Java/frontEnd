@@ -8,7 +8,7 @@ import { FullQuestion } from '../Models/fullQuestion';
 })
 export class AllQuestionsService {
 
-  private url: string = "http://localhost:8300/questions"
+  private url: string = "http://localhost:8765/exam-actions-service/questions"
   constructor(private http: HttpClient) { }
 
   getAllQuestions(): Observable <FullQuestion[]>  {  

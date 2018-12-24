@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class SendMessageService {
 
   constructor(private http: HttpClient) { }
-  private url: string = "http://localhost:8500/messages/post";
+  private url: string = "http://localhost:8765/admin-announcements-service/messages/post";
   sendMessage(message: SendMessageModel){
     return this.http.post<any>(this.url, message);
   }

@@ -9,7 +9,7 @@ import { User } from '../Models/user.model';
 })
 export class ViewUsersService {
 
-  private url = "http://localhost:8200/users"
+  private url = "http://localhost:8765/user-actions-service/users"
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
